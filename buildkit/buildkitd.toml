@@ -50,3 +50,6 @@ keepBytes = 30000000000 # 30 GB
     all = true
     keepDuration = "12h"
     keepBytes = 30000000000 # 30GB in bytes
+
+[registry.configs."https://index.docker.io/v1/"]
+  auth = "{{ docker_auth }}"
