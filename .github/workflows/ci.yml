@@ -22,7 +22,7 @@ jobs:
       - uses: docker/metadata-action@v4
         id: meta
         with:
-          images: ghcr.io/depot/${{ matrix.project }}
+          images: ghcr.io/pipeops/${{ matrix.project }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           tags: |
             type=ref,event=branch
@@ -39,5 +39,5 @@ jobs:
         env:
           DOCKER_BUILDKIT: 1
         run: |
-          docker build --platform linux/amd64,linux/arm64 -t docker.pkg.github.com/${{ github.repository }}/${{ matrix.project }} .
-          docker push docker.pkg.github.com/${{ github.repository }}/${{ matrix.project }}
+          docker build --platform linux/amd64,linux/arm64 -t docker.pkg.github.com/pipeops/${{ matrix.project }} .
+          docker push docker.pkg.github.com/pipeops/${{ matrix.project }}
