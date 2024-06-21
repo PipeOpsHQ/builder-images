@@ -32,10 +32,3 @@ keepBytes = 30000000000 # 30 GB
 [[worker.oci.gcpolicy]]
 all = true
 keepBytes = 30000000000 # 30 GB
-
-
-                [gc]
-                  [gc.policy]
-                    all = true
-                    keepDuration = "48h"
-                    keepBytes = 107374182400  # 100GB in bytes
