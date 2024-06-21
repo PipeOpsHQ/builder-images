@@ -39,5 +39,5 @@ jobs:
         env:
           DOCKER_BUILDKIT: 1
         run: |
-          docker build --platform linux/amd64,linux/arm64 -t docker.pkg.github.com/pipeops/${{ matrix.project }} .
+          docker build -t docker.pkg.github.com/pipeops/${{ matrix.project }} .
           docker push docker.pkg.github.com/pipeops/${{ matrix.project }}
