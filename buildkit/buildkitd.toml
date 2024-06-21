@@ -1,0 +1,55 @@
+root = "/var/lib/buildkit"
+
+[grpc]
+address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
+
+# [grpc.tls]
+# cert = "/etc/buildkit/tls.crt"
+# key = "/etc/buildkit/tls.key"
+# ca = "/etc/buildkit/tlsca.crt"
+
+[worker.oci]
+enabled = true
+gc = true
+gckeepstorage = 30000000000 # 30GB
+snapshotter = "stargz"
+
+[worker.oci.stargzSnapshotter]
+no_background_fetch = true
+noprefetch = true
+no_prometheus = true
+max_concurrency = 16
+
+[worker.oci.stargzSnapshotter.blob]
+chunk_size = 50000000 # 50 MB
+
+[worker.oci.labels]
+  "service" = "pks-buildkit-daemon"
+
+[worker.containerd]
+enabled = false
+
+[[worker.oci.gcpolicy]]
+keepBytes = 10240000000 # 10 GB
+keepDuration = 604800 # 7 days - 3600 * 24 * 7
+filters = [
+  "type==source.local",
+  "type==exec.cachemount",
+  "type==source.git.checkout",
+]
+
+[[worker.oci.gcpolicy]]
+keepBytes = 30000000000 # 30 GB
+
+[[worker.oci.gcpolicy]]
+all = true
+keepBytes = 30000000000 # 30 GB
+
+[gc]
+  [gc.policy]
+    all = true
+    keepDuration = "12h"
+    keepBytes = 30000000000 # 30GB in bytes
+
+[registry.configs."https://index.docker.io/v1/"]
+  auth = "{{DOCKER_AUTH}}"
