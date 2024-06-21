@@ -3,10 +3,10 @@ root = "/var/lib/buildkit"
 [grpc]
 address = ["tcp://0.0.0.0:443", "unix:///run/buildkit/buildkitd.sock"]
 
-[grpc.tls]
-cert = "/etc/buildkit/tls.crt"
-key = "/etc/buildkit/tls.key"
-ca = "/etc/buildkit/tlsca.crt"
+# [grpc.tls]
+# cert = "/etc/buildkit/tls.crt"
+# key = "/etc/buildkit/tls.key"
+# ca = "/etc/buildkit/tlsca.crt"
 
 [worker.oci]
 enabled = true
