@@ -2,6 +2,7 @@
 
 set -x
 
+# Remove existing runc-native directory if it exists
 rm -rf /var/lib/buildkit/runc-native || true
 
 # Format the buildkit storage mount for better inode ratio
@@ -12,4 +13,5 @@ if ! [ -f /var/lib/buildkit/.formatted ]; then
   touch /var/lib/buildkit/.formatted
 fi
 
+# Start the buildkit daemon
 exec buildkitd "$@"
