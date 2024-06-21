@@ -2,16 +2,12 @@
 
 set -x
 
-# Remove existing runc-native directory if it exists
 rm -rf /var/lib/buildkit/runc-native || true
 
-# Format the buildkit storage mount for better inode ratio
+# No need to format and mount storage inside a Docker container
 if ! [ -f /var/lib/buildkit/.formatted ]; then
-  umount /var/lib/buildkit || true
-  mkfs.ext4 -i 2048 -F /dev/vdb || true
-  mount /dev/vdb /var/lib/buildkit || true
+  # Initialize buildkit storage without formatting
   touch /var/lib/buildkit/.formatted
 fi
 
-# Start the buildkit daemon
 exec buildkitd "$@"
