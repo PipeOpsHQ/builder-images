@@ -14,6 +14,9 @@ gc = true
 gckeepstorage = 30000000000 # 30GB
 snapshotter = "overlayfs"
 
+[worker.oci.labels]
+  "service" = "pks-buildkit-daemon"
+
 [worker.containerd]
 enabled = false
 
