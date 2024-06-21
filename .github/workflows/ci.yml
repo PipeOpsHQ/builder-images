@@ -35,7 +35,7 @@ jobs:
           DOCKER_AUTH: ${{ secrets.DOCKER_AUTH }}
         run: |
           export DOCKER_AUTH=${{ secrets.DOCKER_AUTH }}
-          envsubst < buildkitd-template.toml > buildkitd.toml
+          sed -i "s/{{DOCKER_AUTH}}/${DOCKER_AUTH}/g" buildkitd.toml
         working-directory: ./${{ matrix.project }}
 
       - name: Build and Push Docker image
