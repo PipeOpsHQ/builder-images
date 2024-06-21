@@ -12,7 +12,16 @@ address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 enabled = true
 gc = true
 gckeepstorage = 30000000000 # 30GB
-snapshotter = "overlayfs"
+snapshotter = "stargz"
+
+[worker.oci.stargzSnapshotter]
+no_background_fetch = true
+noprefetch = true
+no_prometheus = true
+max_concurrency = 16
+
+[worker.oci.stargzSnapshotter.blob]
+chunk_size = 50000000 # 50 MB
 
 [worker.oci.labels]
   "service" = "pks-buildkit-daemon"
