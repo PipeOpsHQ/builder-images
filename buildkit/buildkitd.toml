@@ -1,7 +1,7 @@
 root = "/var/lib/buildkit"
 
 [grpc]
-address = ["tcp://0.0.0.0:443", "unix:///run/buildkit/buildkitd.sock"]
+address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 
 # [grpc.tls]
 # cert = "/etc/buildkit/tls.crt"
@@ -32,3 +32,9 @@ keepBytes = 30000000000 # 30 GB
 [[worker.oci.gcpolicy]]
 all = true
 keepBytes = 30000000000 # 30 GB
+
+[gc]
+  [gc.policy]
+    all = true
+    keepDuration = "12h"
+    keepBytes = 30000000000 # 30GB in bytes
