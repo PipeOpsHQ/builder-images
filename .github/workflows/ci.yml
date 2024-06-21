@@ -34,6 +34,5 @@ jobs:
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           docker build -t ghcr.io/pipeopshq/builder-images/${{ matrix.project }} .
           docker push ghcr.io/pipeopshq/builder-images/${{ matrix.project }}
-        with:
-          context: ./${{ matrix.project }}
+        working-directory: ./${{ matrix.project }}
 
