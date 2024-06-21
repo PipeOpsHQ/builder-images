@@ -16,7 +16,6 @@ jobs:
       matrix:
         include:
           - project: builder-buildkit
-          - project: builder-circleci
     steps:
       - uses: actions/checkout@v3
       - uses: docker/metadata-action@v4
