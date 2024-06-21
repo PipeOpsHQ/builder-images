@@ -53,3 +53,24 @@ keepBytes = 30000000000 # 30 GB
 
 [registry.configs."https://index.docker.io/v1/"]
   auth = "{{DOCKER_AUTH}}"
+
+[build]
+  frontend = ["dockerfile.v0"]
+
+[cache]
+  [cache.s3]
+    bucket = "your-s3-bucket-name"
+    region = "us-west-1"
+    key_prefix = "cache/"
+    access_key_id = "your-access-key-id"
+    secret_access_key = "your-secret-access-key"
+    endpoint = "s3.amazonaws.com"  # optional, use if using a custom endpoint
+
+# Custom resolver plugin configuration
+[resolver.custom]
+  [resolver.custom.config]
+    id = "s3"
+    source = "pks-custom-cache-resolver-plugin"
+    type = "mount"
+    cache_key = "s3"
+    cache_ttl = "1h"
