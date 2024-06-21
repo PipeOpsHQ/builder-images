@@ -13,6 +13,7 @@ enabled = true
 gc = true
 gckeepstorage = 30000000000 # 30GB
 snapshotter = "stargz"
+max-parallelism = 4
 
 [worker.oci.stargzSnapshotter]
 no_background_fetch = true
@@ -74,3 +75,8 @@ keepBytes = 30000000000 # 30 GB
     type = "mount"
     cache_key = "s3"
     cache_ttl = "1h"
+
+
+[system]
+  # how often buildkit scans for changes in the supported emulated platforms
+  platformsCacheMaxAge = "1h"
