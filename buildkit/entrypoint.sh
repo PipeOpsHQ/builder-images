@@ -11,5 +11,3 @@ if ! [ -f /var/lib/buildkit/.formatted ]; then
   mount /dev/vdb /var/lib/buildkit
   touch /var/lib/buildkit/.formatted
 fi
-
-exec /usr/bin/machine-agent start
