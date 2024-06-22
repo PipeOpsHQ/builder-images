@@ -16,6 +16,5 @@
     "features": {
       "buildkit": true
     },
-    "debug": true,
-    "hosts": ["tcp://0.0.0.0:2375"]
+    "debug": true
   }
