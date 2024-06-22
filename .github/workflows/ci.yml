@@ -32,6 +32,7 @@ jobs:
             type=semver,pattern={{major}}
 
       - name: Set up secrets
+        if: matrix.project == 'buildkit'
         env:
           DOCKER_AUTH: ${{ secrets.DOCKER_AUTH }}
         run: |
