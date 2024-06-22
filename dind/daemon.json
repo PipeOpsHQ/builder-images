@@ -1,0 +1,21 @@
+{
+    "experimental": true,
+    "builder": {
+      "gc": {
+        "enabled": true,
+        "defaultKeepStorage": "300GB",
+        "policy": [
+          {"keepStorage": "1GB", "filter": ["unused-for=1h"]},
+          {"keepStorage": "1GB", "filter": ["unused-for=30m"]},
+          {"keepStorage": "1GB", "filter": ["unused-for=15m"]},
+          {"keepStorage": "1GB", "filter": ["in-use"]}
+        ],
+        "deleteUntagged": true
+      }
+    },
+    "features": {
+      "buildkit": true
+    },
+    "debug": true,
+    "hosts": ["tcp://0.0.0.0:2375"]
+  }
