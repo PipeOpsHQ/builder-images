@@ -16,6 +16,7 @@ jobs:
       matrix:
         include:
           - project: buildkit
+          - project: dind
     steps:
       - uses: actions/checkout@v4
       - uses: docker/metadata-action@v5
