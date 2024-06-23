@@ -8,6 +8,21 @@ address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 # key = "/etc/buildkit/tls.key"
 # ca = "/etc/buildkit/tlsca.crt"
 
+[worker.oci]
+enabled = true
+snapshotter = "stargz"  # Or "stargz" based on testing
+max-parallelism = 1  # Adjust based on CPU and memory resources
+max-concurrency = 16  # Adjust based on I/O capabilities
+
+[worker.oci.stargzSnapshotter]
+max_concurrency = 16
+chunk_size = 25000000  # Adjust based on I/O performance
+
+[[worker.oci.gcpolicy]]
+keepDuration = "6h"  # Adjust based on retention needs and storage capacity
+keepBytes = 20000000000  # Adjust based on available storage and build artifact sizes
+
+
 [gc]
   [gc.policy]
     all = true
