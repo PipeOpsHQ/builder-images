@@ -19,7 +19,7 @@ max-parallelism = 4
 no_background_fetch = true
 noprefetch = true
 no_prometheus = true
-max_concurrency = 4
+max_concurrency = 16
 
 [worker.oci.stargzSnapshotter.blob]
 chunk_size = 50000000 # 50 MB
