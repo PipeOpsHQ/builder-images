@@ -12,10 +12,12 @@ address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 [worker.oci]
 enabled = true
 gckeepstorage = 30000000000
-snapshotter = "overlayfs"
-max-parallelism = 4  # Reduced parallelism to lower CPU and memory usage
+snapshotter = "stargz"
+max-parallelism = 8  # Adjust based on CPU and memory resources
+max-concurrency = 16  # Adjust based on I/O capabilities
 
 [worker.oci.stargzSnapshotter]
+max-concurrency = 16  # Adjust based on I/O capabilities
 chunk_size = 25000000  # Keep chunk size to balance I/O
 no_background_fetch = true
 noprefetch = true
