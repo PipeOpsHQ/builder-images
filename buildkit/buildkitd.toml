@@ -12,7 +12,7 @@ address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 [worker.oci]
 enabled = true
 gckeepstorage = 30000000000
-snapshotter = "stargz"
+snapshotter = "auto"
 max-parallelism = 4  # Adjust based on CPU and memory resources
 max-concurrency = 16  # Adjust based on I/O capabilities
 
