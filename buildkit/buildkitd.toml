@@ -10,8 +10,10 @@ address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 
 [worker.oci]
 enabled = true
+gckeepstorage = 30000000000
+cniPoolSize = 16
 snapshotter = "stargz"  # Or "stargz" based on testing
-max-parallelism = 12  # Adjust based on CPU and memory resources
+max-parallelism = 4  # Adjust based on CPU and memory resources
 max-concurrency = 16  # Adjust based on I/O capabilities
 
 [worker.oci.stargzSnapshotter]
@@ -35,3 +37,8 @@ keepBytes = 30000000000  # Adjust based on available storage and build artifact 
 
 [registry.configs."https://index.docker.io/v1/"]
   auth = "{{DOCKER_AUTH}}"
+
+
+[system]
+  # how often buildkit scans for changes in the supported emulated platforms
+  platformsCacheMaxAge = "1h"
