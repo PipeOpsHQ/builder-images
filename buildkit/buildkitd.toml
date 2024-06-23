@@ -13,7 +13,7 @@ address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 enabled = true
 gckeepstorage = 30000000000
 snapshotter = "stargz"
-max-parallelism = 8  # Adjust based on CPU and memory resources
+max-parallelism = 4  # Adjust based on CPU and memory resources
 max-concurrency = 16  # Adjust based on I/O capabilities
 
 [worker.oci.stargzSnapshotter]
