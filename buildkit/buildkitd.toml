@@ -13,7 +13,6 @@ enabled = true
 gc = true
 gckeepstorage = 30000000000 # 30GB
 snapshotter = "stargz"
-max-parallelism = 4
 
 [worker.oci.stargzSnapshotter]
 no_background_fetch = true
