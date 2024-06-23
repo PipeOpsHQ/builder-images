@@ -8,23 +8,6 @@ address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 # key = "/etc/buildkit/tls.key"
 # ca = "/etc/buildkit/tlsca.crt"
 
-[worker.oci]
-enabled = true
-snapshotter = "overlayfs"
-max-parallelism = 4
-
-[worker.oci.stargzSnapshotter]
-no_background_fetch = true
-noprefetch = true
-no_prometheus = true
-max_concurrency = 8
-
-[worker.oci.stargzSnapshotter.blob]
-chunk_size = 25000000
-
-[[worker.oci.gcpolicy]]
-keepBytes = 30000000000
-
 [gc]
   [gc.policy]
     all = true
