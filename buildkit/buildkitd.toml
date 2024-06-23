@@ -12,7 +12,7 @@ address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 enabled = true
 gc = true
 gckeepstorage = 30000000000 # 30GB
-snapshotter = "stargz"
+snapshotter = "overlayfs"
 max-parallelism = 4
 
 [worker.oci.stargzSnapshotter]
