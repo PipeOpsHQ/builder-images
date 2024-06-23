@@ -12,17 +12,17 @@ address = ["tcp://0.0.0.0:8372", "unix:///run/buildkit/buildkitd.sock"]
 enabled = true
 gc = true
 gckeepstorage = 30000000000 # 30GB
-snapshotter = "overlayfs"
-max-parallelism = 2
+snapshotter = "stargz"
+max-parallelism = 4
 
 [worker.oci.stargzSnapshotter]
 no_background_fetch = true
 noprefetch = true
 no_prometheus = true
-max_concurrency = 8
+max_concurrency = 16
 
 [worker.oci.stargzSnapshotter.blob]
-chunk_size = 25000000 # 25 MB
+chunk_size = 50000000 # 50 MB
 
 [worker.oci.labels]
   "service" = "pks-buildkit-daemon"
@@ -54,10 +54,3 @@ keepBytes = 30000000000 # 30 GB
 
 [registry.configs."https://index.docker.io/v1/"]
   auth = "{{DOCKER_AUTH}}"
-
-[build]
-  frontend = ["dockerfile.v0"]
-
-[system]
-  # how often buildkit scans for changes in the supported emulated platforms
-  platformsCacheMaxAge = "1h"
