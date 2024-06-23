@@ -28,7 +28,6 @@ all = true
 keepDuration = "12h"  # Adjust based on retention needs and storage capacity
 keepBytes = 30000000000  # Adjust based on available storage and build artifact sizes
 
-
 [gc]
   [gc.policy]
     all = true
