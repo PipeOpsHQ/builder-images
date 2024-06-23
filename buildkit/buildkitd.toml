@@ -14,10 +14,10 @@ enabled = true
 gckeepstorage = 30000000000
 snapshotter = "overlayfs"
 max-parallelism = 2  # Reduced parallelism to lower CPU and memory usage
-max-concurrency = 8  # Reduced concurrency to balance I/O load
+max-concurrency = 2  # Minimal concurrency
 
 [worker.oci.stargzSnapshotter]
-max_concurrency = 8  # Matching overall max-concurrency
+max_concurrency = 2  # Matching overall max-concurrency
 chunk_size = 25000000  # Keep chunk size to balance I/O
 no_background_fetch = true
 noprefetch = true
