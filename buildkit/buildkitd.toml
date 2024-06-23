@@ -22,7 +22,7 @@ no_prometheus = true
 max_concurrency = 8
 
 [worker.oci.stargzSnapshotter.blob]
-chunk_size = 50000000 # 50 MB
+chunk_size = 25000000 # 25 MB
 
 [worker.oci.labels]
   "service" = "pks-buildkit-daemon"
