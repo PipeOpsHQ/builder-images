@@ -13,13 +13,13 @@ enabled = true
 gc = true
 gckeepstorage = 30000000000 # 30GB
 snapshotter = "stargz"
-max-parallelism = 4
+max-parallelism = 2
 
 [worker.oci.stargzSnapshotter]
 no_background_fetch = true
 noprefetch = true
 no_prometheus = true
-max_concurrency = 16
+max_concurrency = 8
 
 [worker.oci.stargzSnapshotter.blob]
 chunk_size = 50000000 # 50 MB
