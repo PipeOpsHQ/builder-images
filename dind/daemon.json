@@ -5,11 +5,9 @@
         "enabled": true,
         "defaultKeepStorage": "120GB",
         "policy": [
-          {"keepStorage": "1GB", "filter": ["unused-for=1h"]},
-          {"keepStorage": "1GB", "filter": ["unused-for=30m"]},
-          {"keepStorage": "1GB", "filter": ["unused-for=15m"]},
+          {"keepStorage": "1GB", "filter": ["unused-for=1m"]},
           {"keepStorage": "1GB", "filter": ["in-use"]},
-          {"keepStorage": "0B", "filter": ["dangling=true"]}
+          {"keepStorage": "5GB", "filter": ["dangling=true"]}
         ],
         "deleteUntagged": true
       }
